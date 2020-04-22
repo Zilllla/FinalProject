@@ -35,9 +35,21 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   List.create(req.body)
     .then(data => res.json(data));
-})
+});
 
+// //EDIT
+app.get('/edit/:id', (req, res) => {
+  List.findById(req.params.id, (err, data) => {
+    res.json(data)
+  })
+});
 
+//UPDATE
+app.put('/:id', (req, res) => {
+  List.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+    res.json(data)
+  });
+});
 
 
 
