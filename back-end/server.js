@@ -2,6 +2,7 @@ const List = require('./models/list.js');
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const db = mongoose.connection;
@@ -13,6 +14,7 @@ const dbupdateobject = {
 
 app.use(express.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(cors());
 
 // Connect to Mongo
 mongoose.connect(process.env.DATABASE_URL, dbupdateobject);
