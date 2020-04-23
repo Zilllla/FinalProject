@@ -2,7 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import Post from './Post.js';
 
-let baseUrl = 'http://localhost:3005';
+let baseUrl = '';
+if (process.env.NODE_ENV === 'development') {
+  baseUrl = 'http://localhost:3005'
+} else {
+  console.log('this is for heroku');
+}
 
 class Main extends React.Component {
   constructor(props) {
